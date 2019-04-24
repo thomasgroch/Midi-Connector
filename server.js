@@ -28,7 +28,7 @@ app.use(async (ctx, next) => {
 
 router.get('/', async (ctx, next) => {
   ctx.response.status = 200
-  ctx.body = 'Hi there!'
+  ctx.body = 'Hi there! Here is the <a href="/app">app</a>.'
   next()
 })
 
@@ -55,4 +55,12 @@ router.delete('/disconnect-all', async (ctx, next) => {
 
 app.use(router.routes())
 
-module.exports = app.listen(3000)
+const port = process.env.PORT || 3000
+const hostname = process.env.APP_HOSTNAME || null
+const server = app.listen(port, hostname, () => {
+  const host = server.address().address
+  const port = server.address().port
+  console.log(`midi-connector Listening on ${host}:${port}`)
+})
+
+module.exports = server

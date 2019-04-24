@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 
 const config = {
   devtool: '',
@@ -35,11 +35,7 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
+    new Dotenv(),
     new HtmlWebpackPlugin({
       title: 'midi-connector',
       template: path.resolve(__dirname, 'src/index.ejs')
