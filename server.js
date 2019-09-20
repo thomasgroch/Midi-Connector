@@ -31,7 +31,7 @@ router.get('/', async (ctx, next) => {
   ctx.type = 'text/html'
   ctx.body = `Hi there! Here some resources:<br>
               <a href="/midi-devices">json</a>
-              <a href="/">app</a>
+              <a href="/app">app</a>
               `
   next()
 })
