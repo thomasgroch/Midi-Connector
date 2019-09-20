@@ -2,13 +2,14 @@
   "name": "midi-connector",
   "version": "1.0.0",
   "scripts": {
-    "start": "yarn client:build && node server.js",
+    "start": "yarn client:build && node --require dotenv/config server.js",
     "client:build": "cd client/; yarn build",
     "watch": "nodemon server.js",
     "test": "jest"
   },
   "dependencies": {
     "@koa/cors": "2",
+    "dotenv": "8.1.0",
     "es6-promisify": "^5.0.0",
     "koa": "^2.4.1",
     "koa-body": "^2.5.0",
