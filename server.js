@@ -12,6 +12,7 @@ const router = new Router()
 
 const assets = new Koa()
 assets.use(serve(`${__dirname}/client/dist`))
+app.use(mount('/', assets))
 app.use(cors({ origin: '*' }))
 
 app.use(async (ctx, next) => {
@@ -57,7 +58,6 @@ router.delete('/disconnect-all', async (ctx, next) => {
 })
 
 app.use(router.routes())
-app.use(mount('/', assets))
 
 const port = process.env.PORT || 80
 const hostname = process.env.APP_HOSTNAME || null
