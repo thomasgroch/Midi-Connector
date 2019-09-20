@@ -26,9 +26,13 @@ app.use(async (ctx, next) => {
   }
 })
 
-router.get('/', async (ctx, next) => {
+router.get('/status', async (ctx, next) => {
   ctx.response.status = 200
-  ctx.body = 'Hi there! Here is the <a href="/app">app</a>.'
+  ctx.type('text/html')
+  ctx.body = `Hi there! Here some resources:<br>
+              <a href="/midi-devices">json</a>
+              <a href="/">app</a>
+              `
   next()
 })
 
@@ -55,7 +59,7 @@ router.delete('/disconnect-all', async (ctx, next) => {
 
 app.use(router.routes())
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 80
 const hostname = process.env.APP_HOSTNAME || null
 const server = app.listen(port, hostname, () => {
   const host = server.address().address
