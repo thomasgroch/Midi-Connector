@@ -2,8 +2,8 @@
   "name": "midi-connector",
   "version": "1.0.0",
   "scripts": {
-    "start": "yarn client:build && node --require dotenv/config server.js",
-    "client:build": "cd client/; yarn build",
+    "start": "node --require dotenv/config server.js",
+    "build:client": "cd client/; yarn build",
     "watch": "nodemon server.js",
     "test": "jest"
   },
