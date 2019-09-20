@@ -12,7 +12,7 @@ const router = new Router()
 
 const assets = new Koa()
 assets.use(serve(`${__dirname}/client/dist`))
-app.use(mount('/', assets))
+app.use(mount('/app', assets))
 app.use(cors({ origin: '*' }))
 
 app.use(async (ctx, next) => {
@@ -26,7 +26,7 @@ app.use(async (ctx, next) => {
   }
 })
 
-router.get('/status', async (ctx, next) => {
+router.get('/', async (ctx, next) => {
   ctx.response.status = 200
   ctx.type = 'text/html'
   ctx.body = `Hi there! Here some resources:<br>
