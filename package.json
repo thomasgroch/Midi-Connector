@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node --require dotenv/config server.js",
-    "build:client": "cd client/; yarn build",
+    "build:client": "cd client/ && npm run build",
     "watch": "nodemon server.js",
     "test": "jest"
   },
